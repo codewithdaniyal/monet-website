@@ -12,12 +12,12 @@ const FONT_DISPLAY = "var(--font-display)";
 const FONT_BODY = "var(--font-body)";
 
 const CATEGORIES = [
-  { id: 1, num: "01", title: "The Bridal Studio", sub: "Mehndi · Barat · Walima · Engagement", desc: "Bespoke bridal artistry for your most unforgettable day", img: "https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=80" },
+  { id: 1, num: "01", title: "The Bridal Studio", sub: "Mehndi · Barat · Walima · Engagement", desc: "Bespoke bridal artistry for your most unforgettable day", img: "https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=800&q=80" },
   { id: 2, num: "02", title: "Hair Lounge", sub: "Balayage · Keratin · Treatments", desc: "Premium hair transformations using luxury products", img: "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=800&q=80" },
   { id: 3, num: "03", title: "Skin & Aesthetics", sub: "HydraFacial · Dermaplaning", desc: "Clinical skincare with visible, lasting results", img: "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=800&q=80" },
   { id: 4, num: "04", title: "Body & Spa", sub: "Mani/Pedi · Waxing · Body Spa", desc: "Full-body luxury rituals from head to toe", img: "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=800&q=80" },
   { id: 5, num: "05", title: "Nail Studio", sub: "Extensions · Nail Art · Spa", desc: "Precision nail artistry in every detail", img: "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=800&q=80" },
-  { id: 6, num: "06", title: "Laser & Glow", sub: "Carbon Peel · Brightening", desc: "Advanced laser treatments for flawless skin", img: "https://images.unsplash.com/photo-1487412912498-0447578fcca8?w=800&q=80" },
+  { id: 6, num: "06", title: "Laser & Glow", sub: "Carbon Peel · Brightening", desc: "Advanced laser treatments for flawless skin", img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80" },
 ];
 
 export function ServicesBento() {
@@ -114,16 +114,18 @@ export function ServicesBento() {
                   transition: "all 0.5s var(--ease-out)",
                 }}>
                   {/* Background Image */}
-                  <Image 
-                    src={cat.img} 
-                    alt={cat.title} 
-                    fill 
-                    className="object-cover"
-                    style={{ 
-                      transform: isHov ? "scale(1.08)" : "scale(1)", 
-                      transition: "transform 0.8s var(--ease-out)" 
-                    }} 
-                  />
+                  <div style={{ position: "relative", width: "100%", height: "100%" }}>
+                    <Image 
+                      src={cat.img} 
+                      alt={cat.title} 
+                      fill 
+                      className="object-cover"
+                      style={{ 
+                        transform: isHov ? "scale(1.08)" : "scale(1)", 
+                        transition: "transform 0.8s var(--ease-out)" 
+                      }} 
+                    />
+                  </div>
                   
                   {/* Overlay */}
                   <div style={{ 
@@ -148,7 +150,7 @@ export function ServicesBento() {
                     <div style={{ 
                       fontFamily: FONT_BODY, fontSize: 13, fontWeight: 300, color: "rgba(244,240,230,0.8)", 
                       lineHeight: 1.6, marginTop: 12, 
-                      maxHeight: isHov ? 60 : 0, 
+                      maxHeight: isHov ? 100 : 0, 
                       opacity: isHov ? 1 : 0, 
                       overflow: "hidden", 
                       transition: "all 0.4s var(--ease-out)" 
