@@ -1,26 +1,169 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ─── MONÉT Brand Theme (Tailwind v4) ─── */
+@theme {
+  /* Colors */
+  --color-cream: #F4F0E6;
+  --color-cream-dark: #EAE4D6;
+  --color-cream-light: #FAF8F2;
+  --color-white: #FFFFFF;
+  --color-obsidian: #1A1A1A;
+  --color-obsidian-2: #2C2C2C;
+  --color-champagne: #C5B396;
+  --color-champagne-light: #D9CDB8;
+  --color-champagne-dark: #A89070;
+  --color-stone: #8A8070;
+  --color-whisper: #B8AF9E;
+  --color-parchment: #EAE4D6;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Fonts */
+  --font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-body: 'Montserrat', system-ui, sans-serif;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+  /* Spacing */
+  --spacing-18: 4.5rem;
+  --spacing-22: 5.5rem;
+  --spacing-26: 6.5rem;
+  --spacing-30: 7.5rem;
+
+  /* Animations */
+  --animate-fade-up: fadeUp 0.9s cubic-bezier(0.16,1,0.3,1) forwards;
+  --animate-fade-in: fadeIn 0.7s ease forwards;
+  --animate-line-grow: lineGrow 0.7s cubic-bezier(0.16,1,0.3,1) forwards;
+  --animate-clip-reveal: clipReveal 1s cubic-bezier(0.16,1,0.3,1) forwards;
+  --animate-float: float 8s ease-in-out infinite;
+  --animate-marquee: marquee 80s linear infinite;
+  --animate-marquee-r: marqueeR 80s linear infinite;
+  --animate-scale-in: scaleIn 0.6s cubic-bezier(0.16,1,0.3,1) forwards;
+  --animate-draw: drawStroke 2s ease forwards;
+  --animate-grain: grain 0.4s steps(2) infinite;
+  --animate-shimmer: shimmer 3s ease infinite;
+
+  /* Keyframes */
+  @keyframes grain {
+    0%, 100% { transform: translate(0, 0); }
+    10% { transform: translate(-2%, -3%); }
+    30% { transform: translate(3%, 2%); }
+    50% { transform: translate(-1%, 4%); }
+    70% { transform: translate(2%, -2%); }
+    90% { transform: translate(-3%, 1%); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(32px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+  @keyframes lineGrow {
+    from { transform: scaleX(0); transform-origin: left; }
+    to   { transform: scaleX(1); transform-origin: left; }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+  @keyframes marqueeR {
+    from { transform: translateX(-50%); }
+    to   { transform: translateX(0); }
+  }
+  @keyframes clipReveal {
+    from { clip-path: inset(0 100% 0 0); }
+    to   { clip-path: inset(0 0% 0 0); }
+  }
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50%       { transform: translateY(-10px); }
+  }
+  @keyframes shimmer {
+    0%   { background-position: -200% center; }
+    100% { background-position:  200% center; }
+  }
+  @keyframes drawStroke {
+    from { stroke-dashoffset: 500; }
+    to   { stroke-dashoffset: 0; }
+  }
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.94); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-12px); }
+    to   { opacity: 1; transform: translateY(0); }
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─── CSS Custom Properties (for inline/direct usage) ─── */
+:root {
+  --cream: #F4F0E6;
+  --cream-dark: #EAE4D6;
+  --white: #FFFFFF;
+  --obsidian: #1A1A1A;
+  --obsidian-2: #2C2C2C;
+  --champagne: #C5B396;
+  --champagne-light: #D9CDB8;
+  --stone: #8A8070;
+  --whisper: #B8AF9E;
+  --border: rgba(26,26,26,0.1);
+  --border-hover: rgba(26,26,26,0.25);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.87, 0, 0.13, 1);
+  --duration-fast: 200ms;
+  --duration-mid: 400ms;
+  --duration-slow: 800ms;
 }
+
+/* ─── Base Reset ─── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  background-color: var(--cream);
+  color: var(--obsidian);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+/* ─── Paper Grain Texture ─── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: -100%;
+  width: 300%;
+  height: 300%;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23g)'/%3E%3C/svg%3E");
+  opacity: 0.022;
+  pointer-events: none;
+  z-index: 9999;
+  animation: grain 0.4s steps(2) infinite;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--cream); }
+::-webkit-scrollbar-thumb { background: var(--champagne); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--obsidian); }
+
+/* ─── Selection ─── */
+::selection { background: var(--obsidian); color: var(--cream); }
+
+/* ─── Focus ─── */
+:focus-visible { outline: 1.5px solid var(--obsidian); outline-offset: 3px; border-radius: 1px; }
+
+/* ─── Image defaults ─── */
+img { max-width: 100%; display: block; }
+
+/* ─── Utility classes ─── */
+.container-xl { max-width: 1400px; margin: 0 auto; padding: 0 clamp(1.5rem, 5vw, 5rem); }
+.container-lg { max-width: 1200px; margin: 0 auto; padding: 0 clamp(1.5rem, 4vw, 4rem); }
+.section-padding { padding: clamp(5rem, 10vw, 10rem) 0; }
+.label-text { font-family: var(--font-body); font-size: 10px; font-weight: 500; letter-spacing: 0.35em; text-transform: uppercase; }
+.display-text { font-family: var(--font-display); }
+
+/* Hide scrollbar utility */
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
