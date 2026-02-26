@@ -94,11 +94,10 @@ export function ServicesBento() {
           {CATEGORIES.map((cat, i) => {
             const isHov = hovered === cat.id;
             return (
-              <Link key={cat.id} href="/services" style={{ textDecoration: "none", display: "block", height: "100%" }}
+              <Link key={cat.id} href="/services" style={{ textDecoration: "none", display: "block", height: "100%", transitionDelay: `${0.3 + i * 0.1}s` }}
                 onMouseEnter={() => setHovered(cat.id)}
                 onMouseLeave={() => setHovered(null)}
                 className={`bento-item-${i} fade-in-up ${inView ? 'active' : ''}`}
-                style={{ transitionDelay: `${0.3 + i * 0.1}s` }}
               >
                 <div style={{
                   position: "relative", overflow: "hidden",
