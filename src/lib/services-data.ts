@@ -17,7 +17,7 @@ export const services: Service[] = [
     description: 'Expert makeup and hair styling for your big day, featuring international premium products.',
     price: 'From PKR 45,000',
     duration: '180 mins',
-    imageUrl: 'https://images.unsplash.com/photo-1596464716127-f2a82984de30?w=800&q=85',
+    imageUrl: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=800&q=85',
   },
   {
     id: 'bridal-2',
@@ -162,7 +162,7 @@ export const services: Service[] = [
     description: 'FDA-approved, painless diode laser technology for permanent hair reduction.',
     price: 'From PKR 35,000',
     duration: '120 mins',
-    imageUrl: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=85',
+    imageUrl: 'https://images.unsplash.com/photo-1487412912498-0447578fcca8?w=800&q=85',
   },
   {
     id: 'laser-2',
